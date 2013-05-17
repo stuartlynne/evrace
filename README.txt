@@ -1,5 +1,5 @@
 Permit Applications                                             Stuart Lynne
-                                                Sun Feb 17 00:14:01 PST 2013 
+                                                Fri Mar 01 11:26:54 PST 2013 
 
 
 0. Overview
@@ -91,7 +91,7 @@ E.g. SSAbbotsford2013.txt:
 
 For editing:
 
-    - Word or some Linux equivalent to edit the .doc file
+    - libreoffice
     - Visio to edit the .vsd map files
 
 The following are required in either Cygwin or Linux:
@@ -139,8 +139,5 @@ E.g.
     SSTOL2013-2013-02-18.pdf
 
 etc.
-
-
-
 
 
