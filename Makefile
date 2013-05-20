@@ -1,5 +1,8 @@
 
 
+TCPS=$(wildcard *.TCP)
+TPDFS=$(subst .tcp,.pdf,${TCPS})
+
 HUPS=$(wildcard *.hup)
 DPDFS=$(subst .hup,.pdf,${HUPS})
 
@@ -12,18 +15,22 @@ DPDFS=$(subst .hup,.pdf,${HUPS})
 
 
 %.pdf : %.vsd
-	unoconv -f pdf $<
+	unoconv -f pdf $< > /dev/null 2>&1
 
 %.pdf : %.doc
-	unoconv -f pdf $<
+	unoconv -f pdf $< > /dev/null 2>&1
 
 %.pdf : %.hup
 	make `cat $<`
 	pdfunite `cat $<` $@
 
+%.pdf : %.tcp
+	make `cat $<`
+	pdfunite `cat $<` $@
 
 
-all: ${VPDFS} ${SPDFS} ${DPDFS}
+
+all: ${VPDFS} ${SPDFS} ${DPDFS} ${TPDFS}
 
 
 test:
@@ -32,8 +39,10 @@ test:
 	@echo HUPS: ${HUPS}
 	@echo PDFS: ${DPDFS}
 
+
+CLEAN = Abbotsford EV Map Misc Notices TCP TownshipOfLangley
 clean:
-	-rm -f */*.pdf
+	-rm -f ${CLEAN}
 
 really-clean: clean
 	-rm -f *.pdf 
